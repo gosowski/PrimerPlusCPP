@@ -20,10 +20,11 @@ void timePrint(long long int s) {
   const int secondsPerMinute = 60;
 
   int days = s/(hoursPerDay*minutesPerHour*secondsPerMinute);
-  s = s - days*hoursPerDay*minutesPerHour*secondsPerMinute;
+  // s = s - days*hoursPerDay*minutesPerHour*secondsPerMinute;
+  s = s % (hoursPerDay*minutesPerHour*secondsPerMinute); //more elegant way
 
   int hours = s/(minutesPerHour*secondsPerMinute);
-  s = s - hours*minutesPerHour*secondsPerMinute;
+  s = s % (minutesPerHour*secondsPerMinute);
 
   int minutes = s/secondsPerMinute;
   s = s - minutes*secondsPerMinute;

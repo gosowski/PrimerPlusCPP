@@ -13,6 +13,9 @@ int main() {
   std::cout<<"Enter your surname: ";
   std::cin.getline(surname, arrSize);
 
-  std::cout<<"Data inverted: "<<surname<<", "<<name<<"\n";
+  strcat(surname, ", ");
+  strcat(surname, name);
+
+  std::cout<<"Data inverted: "<<surname<<std::endl;
   return 0;
 }

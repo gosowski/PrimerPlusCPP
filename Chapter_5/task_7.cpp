@@ -15,13 +15,12 @@ int main() {
 
   for(int i=0; i<numberOfCars; i++) {
     std::cout<<"Enter vehicle brand: ";
-    getline(std::cin>>std::ws, (*ptr).brand);
+    getline(std::cin>>std::ws, ptr[i].brand);
     // std::cin>>(*ptr).brand;
 
     std::cout<<"Enter a year of build: ";
     std::cin>>ptr[i].buildYear;
 
-    *(ptr+1);
   }
 
   for(int i=0; i<numberOfCars; i++) {

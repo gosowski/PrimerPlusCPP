@@ -11,6 +11,8 @@ struct Person {
   int preference;
 };
 
+void printNames(Person*, char*);
+
 int main() {
 
 Person array[] = {
@@ -19,9 +21,14 @@ Person array[] = {
   {"Michal Glus", "Jaszczurka", "chorazy", 0}
 };
 
+
+
 menu();
-// choice();
-switchOption(choice());
+
+char userChoice = switchOption(choice());
+char * ptr = &userChoice;
+
+printNames(array, ptr);
 
 return 0;
 }
@@ -35,7 +42,7 @@ void menu() {
 
 char choice() {
   char ch;
-  
+
   std::cin>>ch;
   while(ch != 'a' && ch != 'b' && ch != 'c' && ch != 'd') {
     std::cout<<"You entered invalid character"<<std::endl;
@@ -50,16 +57,43 @@ char switchOption(char ch) {
 
     switch(ch) {
       case 'a':
-        std::cout<<"Option 1 has been chosen"<<std::endl;
-        break;
+        return 'a';
       case 'b':
-        std::cout<<"option 2 has been chosen"<<std::endl;
-        break;
+        return 'b';
       case 'c':
-        std::cout<<"Option 3 has been chosen"<<std::endl;
-        break;
+        return 'c';
       case 'd':
-        std::cout<<"option 4 has been chosen"<<std::endl;
-        break;
+        return 'd';
     }
+}
+
+void printNames(Person *arr, char *ptrCh) {
+  switch(*ptrCh) {
+    case 'a':
+      for(int i=0; i<3; i++) {
+        std::cout<<arr[i].name<<std::endl;
+      }
+      break;
+    case 'b':
+      for(int i=0; i<3; i++) {
+        std::cout<<arr[i].alias<<std::endl;
+      }
+      break;
+    case 'c':
+      for(int i=0; i<3; i++) {
+        std::cout<<arr[i].position<<std::endl;
+      }
+      break;
+    case 'd':
+      for(int i=0; i<3; i++) {
+        if(arr[i].preference == 0) {
+          std::cout<<arr[i].name<<std::endl;
+        } else if(arr[i].preference == 1) {
+          std::cout<<arr[i].alias<<std::endl;
+        } else if(arr[i].preference == 2) {
+          std::cout<<arr[i].position<<std::endl;
+        }
+      }
+      break;
+  }
 }

@@ -21,8 +21,6 @@ Person array[] = {
   {"Michal Glus", "Jaszczurka", "chorazy", 0}
 };
 
-
-
 menu();
 
 char userChoice = switchOption(choice());

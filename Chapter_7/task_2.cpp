@@ -1,27 +1,37 @@
 #include <iostream>
 
-void setData(int arr[], int);
+int setData(int arr[], int);
 void showData(int *, int *);
-double avg(int [], int);
+template <class T> T avg(T arr[], T size);
 
 int main() {
-  int array[10];
+  int array[10] = {};
 
-  setData(array, 10);
-  showData(array, array+10);
-  std::cout<<avg(array, 10);
+  int counter = setData(array, 10);
+  std::cout<<counter<<std::endl;
+
+  showData(array, array+counter);
+  std::cout<<avg(array, counter);
 
   std::cout<<std::endl;
   return 0;
 }
 
-void setData(int arr[], int size) {
-  int result;
+int setData(int arr[], int size) {
+  char result;
+  int counter = 0;
 
-  for(int i=0; i<size; i++) {
+  while(counter<10 && result != 'q') {
     std::cin>>result;
-    arr[i] = result;
+    arr[counter] = result-48; //convert chart to int chart-48
+    counter++;
   }
+  
+  if(result == 'q') {
+    counter -= 1;
+  }
+
+  return counter;
 }
 
 void showData(int * begin, int * end) {
@@ -30,13 +40,12 @@ void showData(int * begin, int * end) {
   }
 }
 
-double avg(int arr[], int size) {
-
-  int sum = 0;
+template <class T> T avg(T arr[], T size) {
+  T sum = 0.0;
 
   for(int i=0; i<size; i++) {
     sum += arr[i];
   }
 
-  return sum/10;
+  return sum/size;
 }

@@ -26,6 +26,9 @@ int fill_array(double arr[], int size) {
 
   while(i<size) {
     std::cin>>numberToAdd;
+    if(!std::cin) {
+      break;
+    }
     arr[i] = numberToAdd;
     i++;
   }

@@ -3,12 +3,18 @@
 void fillArray(double *begin, const double *end);
 void showArray(const char* s[], double* e);
 
+struct expenses {
+  double values[4]; 
+};
+
 int main() {
   const char *seasons[] = {"Spring", "Summer", "Autumn", "Winter"};
-  double expenses[4];
+  expenses exp;
 
-  fillArray(expenses, expenses+4);
-  showArray(seasons, expenses);
+  std::cout<<sizeof(exp)<<std::endl;
+
+  fillArray(exp.values, exp.values+4);
+  showArray(seasons, exp.values);
 
   return 0;
 }
@@ -16,7 +22,9 @@ int main() {
 void fillArray(double *begin, const double *end) {
   double *pt;
   double tmp;
-
+  std::cout<<sizeof(begin)<<std::endl;
+  std::cout<<sizeof(*end)<<std::endl;
+  
   for(pt=begin; pt!=end; pt++) {
     std::cin>>tmp;
     *pt = tmp;

@@ -1,44 +1,40 @@
 #include <iostream>
 
-void fillArray(double *begin, const double *end);
-void showArray(const char* s[], double* e);
-
 struct expenses {
   double values[4]; 
 };
+
+void fillArray(expenses *ptr);
+void showArray(const char* s[], const expenses * ptr);
 
 int main() {
   const char *seasons[] = {"Spring", "Summer", "Autumn", "Winter"};
   expenses exp;
 
 
-  fillArray(exp.values, exp.values+4);
-  showArray(seasons, exp.values);
+  fillArray(&exp);
+  showArray(seasons, &exp);
 
   return 0;
 }
 
-void fillArray(double *begin, const double *end) {
+void fillArray(expenses *ptr) {
   double *pt;
   double tmp;
   
-  for(pt=begin; pt!=end; pt++) {
+  for(int i=0; i<4; i++) {
     std::cin>>tmp;
-    *pt = tmp;
+    ptr->values[i] = tmp;
   }
 }
 
-void showArray(const char* s[], double* e) {
+void showArray(const char* s[], const expenses * ptr) {
   double total = 0.0;
   double *pTotal = &total;
-  double *pt = e;
-  int i = 0;
 
-  for(pt=e;pt<e+4; pt++) {
-    std::cout<<*(s+i)<<" | "<<*pt<<std::endl;
-    *pTotal += *pt;
-
-    i++;
+  for(int i=0; i<4; i++) {
+    std::cout<<*(s+i)<<" | "<<ptr->values[i]<<std::endl;
+    *pTotal += ptr->values[i];
   }
 
   std::cout<<"Annual expenses: "<<*pTotal<<std::endl;

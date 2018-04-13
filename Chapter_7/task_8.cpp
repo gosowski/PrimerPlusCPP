@@ -11,7 +11,6 @@ int main() {
   const char *seasons[] = {"Spring", "Summer", "Autumn", "Winter"};
   expenses exp;
 
-  std::cout<<sizeof(exp)<<std::endl;
 
   fillArray(exp.values, exp.values+4);
   showArray(seasons, exp.values);
@@ -22,8 +21,6 @@ int main() {
 void fillArray(double *begin, const double *end) {
   double *pt;
   double tmp;
-  std::cout<<sizeof(begin)<<std::endl;
-  std::cout<<sizeof(*end)<<std::endl;
   
   for(pt=begin; pt!=end; pt++) {
     std::cin>>tmp;

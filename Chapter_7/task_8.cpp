@@ -11,7 +11,6 @@ int main() {
   const char *seasons[] = {"Spring", "Summer", "Autumn", "Winter"};
   expenses exp;
 
-
   fillArray(&exp);
   showArray(seasons, &exp);
 
